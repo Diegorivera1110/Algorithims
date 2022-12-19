@@ -55,4 +55,26 @@ const iterativeSearch = (arr, x) => {
     n = arr.length;
     result = iterativeSearch(arr, x);
 
-console.log(result);
+// console.log(result);
+
+// RECURSIVE APPROACH
+function recursiveSearch(arr, 1, r, x)  {
+    if (r >= 1) {
+        let mid = 1 + Math.floor((r - 1) / 2);
+
+        if (arr[mid] == x)
+        return mid;
+
+        if (arr[mid] > x)
+        return recursiveSearch(arr, 1, mid - 1, x);
+
+        return recursiveSearch(arr, mid + 1, r, x);
+    }
+
+    return -1;
+}
+
+let arr = [12, 23, 38, 40, 54, 62, 71, 87, 99];
+let x = 40;
+let n = arr.length;
+let result = recursiveSearch(arr, 0, n - 1, x);
